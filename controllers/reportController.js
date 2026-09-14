@@ -17,7 +17,9 @@ const CONTENT_FIELDS = [
 const EDITABLE_STATUSES = ["draft", "needs_correction"];
 
 function isOwner(report, user) {
-  return report.user.toString() === user.id.toString();
+  const reportUserId = report.user._id || report.user;
+  const reqUserId = user._id || user.id;
+  return reportUserId.toString() === reqUserId.toString();
 }
 
 function pickContentFields(source) {
